@@ -26,16 +26,17 @@ pipeline {
                 sh 'npx playwright test'
             }
         }
-        post {
-    always {
-        publishHTML([
-            reportDir: 'playwright-report',
-            reportFiles: 'index.html',
-            reportName: 'Playwright Report',
-            keepAll: true,
-            alwaysLinkToLastBuild: true
-        ])
     }
-}
+
+    post {
+        always {
+            publishHTML([
+                reportDir: 'playwright-report',
+                reportFiles: 'index.html',
+                reportName: 'Playwright Report',
+                keepAll: true,
+                alwaysLinkToLastBuild: true
+            ])
+        }
     }
 }
